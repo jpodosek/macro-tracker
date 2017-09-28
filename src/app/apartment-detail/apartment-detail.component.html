@@ -1,5 +1,6 @@
 
-  <h2>Rent: {{apartment.rent}}</h2>
+{{error}}
+<h2>Rent: {{apartment.rent}}</h2>
 {{apartment.address}}<br>
 {{apartment.city}}, {{apartment.state}} {{apartment.zip_code}}
 <ul>
@@ -7,5 +8,8 @@
 <li>Number of Bathrooms: {{apartment.number_of_bathrooms}}</li>
 <li>Number of Bedrooms: {{apartment.number_of_bedrooms}}</li>
 </ul>
+<button *ngIf="currentUser && currentUser.id == apartment.user_id && apartment.is_active" (click)="deactivateApartment()" >Deactivate</button>
+<button *ngIf="currentUser && currentUser.id == apartment.user_id && apartment.is_active === false" (click)="activateApartment()">Activate</button>
+
 
 

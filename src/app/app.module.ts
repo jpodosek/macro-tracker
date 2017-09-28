@@ -10,11 +10,14 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { ApartmentListingsComponent } from './apartment-listings/apartment-listings.component';
 import { ApartmentDetailComponent } from './apartment-detail/apartment-detail.component';
 import { LoginComponent } from './login/login.component';
+import { MyListingsComponent } from './my-listings/my-listings.component';
 //Services
 import { ApartmentDataService } from './apartment-data/apartment-data.service';
 import { SessionDataService } from './session-data/session-data.service';
+
 const routes: Route[] = [
   { path: 'login', component: LoginComponent},
+  { path: 'my-listings', component: MyListingsComponent},
   { path: '',      component: ApartmentListingsComponent } 
 ];
 
@@ -24,7 +27,8 @@ const routes: Route[] = [
     NavigationComponent,
     ApartmentListingsComponent,
     ApartmentDetailComponent,
-    LoginComponent
+    LoginComponent,
+    MyListingsComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +36,8 @@ const routes: Route[] = [
     RouterModule.forRoot(routes),
     FormsModule
   ],
-  providers:[ApartmentDataService, SessionDataService],
+  providers:[ApartmentDataService, //singleton, bc at module level
+  SessionDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SessionDataService } from "../session-data/session-data.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -12,20 +13,28 @@ export class LoginComponent implements OnInit {
   private email: string;
   private password: string;
   private message: string;
+  options = { withCredentials: true};
 
-  constructor(private data: SessionDataService) { }
+  constructor(private data: SessionDataService, private router: Router) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
  
 
   submitCredentials() {
    this.data
    .login(this.email, this.password)
-   .subscribe(
-      user => this.message = 'Your name is ' + user.first_name,
-      e => this.message = 'Uh oh. Error: ' + e
-   );
+     .subscribe(
+               user => {
+                 if (user) {
+                   this.router.navigate(['/my-listings']);
+                 } else {
+                   this.message = 'Could not log in with those credentials';
+                 }
+               },
+                e => this.message = 'Ruh Roh, ' + e
+             );
   }
+
+  
 
 }
