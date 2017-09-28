@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
                    this.message = 'Could not log in with those credentials';
                  }
                },
-                e => this.message = 'Ruh Roh, ' + e
+                e => this.message = 'Oops! We ran into the following error: ' + e
              );
   }
 

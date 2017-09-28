@@ -1,15 +1,16 @@
 
 {{error}}
-<h2>Rent: {{apartment.rent}}</h2>
+<h3>DETAILS:</h3>
+<b>${{apartment.rent}} per month</b><br>
 {{apartment.address}}<br>
 {{apartment.city}}, {{apartment.state}} {{apartment.zip_code}}
-<ul>
-<li>Square Footage: {{apartment.square_footage}}</li>
-<li>Number of Bathrooms: {{apartment.number_of_bathrooms}}</li>
-<li>Number of Bedrooms: {{apartment.number_of_bedrooms}}</li>
-</ul>
+    <ul>
+        <li>Square Footage: {{apartment.square_footage}}</li>
+        <li>Number of Bathrooms: {{apartment.number_of_bathrooms}}</li>
+        <li>Number of Bedrooms: {{apartment.number_of_bedrooms}}</li>
+    </ul>
 <button *ngIf="currentUser && currentUser.id == apartment.user_id && apartment.is_active" (click)="deactivateApartment()" >Deactivate</button>
-<button *ngIf="currentUser && currentUser.id == apartment.user_id && apartment.is_active === false" (click)="activateApartment()">Activate</button>
+<button *ngIf="currentUser && currentUser.id == apartment.user_id && !apartment.is_active" (click)="activateApartment()">Activate</button>
 
 
 

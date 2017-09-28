@@ -3,6 +3,7 @@ import { ApartmentDataService } from '../apartment-data/apartment-data.service';
 import { Apartment } from "../apartment";
 import { SessionDataService } from "../session-data/session-data.service";
 import { User } from "../user";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-apartment-detail',
@@ -15,9 +16,10 @@ export class ApartmentDetailComponent implements OnInit {
   apartment: Apartment;
   currentUser: User;
   error: String;
+  private message: string;
   baseUrl = 'http://localhost:4567/api/apartments';
 
-  constructor(private data: SessionDataService, private data2: ApartmentDataService) { }
+  constructor(private data: SessionDataService, private data2: ApartmentDataService, private router: Router) { }
 
   ngOnInit() {
        
@@ -27,14 +29,35 @@ export class ApartmentDetailComponent implements OnInit {
 
    activateApartment() {
      console.log("activate Ran");
-     this.data2.activateApartment(this.apartment);
+     this.data2
+      .activateApartment(this.apartment)
+        .subscribe(
+                  apartment => {
+                    if (apartment) {
+                      this.router.navigate(['/my-listings']);
+                    } else {
+                      e => this.message = 'Oops! We ran into the following error: ' + e
+                    }
+                  }
+
+                  );
 
   }
 
   deactivateApartment() {
     console.log("deactivate Ran");
-    this.data2.deactivateApartment(this.apartment);
-  }
+    this.data2
+      .deactivateApartment(this.apartment)
+        .subscribe(
+                  apartment => {
+                    if (apartment) {
+                      this.router.navigate(['/my-listings']);
+                    } else {
+                      e => this.message = 'Oops! We ran into the following error: ' + e
+                    }
+                  }
 
+      );
+  }
 
 }
