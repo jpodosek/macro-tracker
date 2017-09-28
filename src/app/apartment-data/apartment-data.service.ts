@@ -14,6 +14,7 @@ export class ApartmentDataService {
   }
 
   getActiveListings(): Observable<Apartment[]> {
+    
     return this.http
                 .get(this.baseUrl)
                 .map(response => response.json()); //map response to whatever json was in there
@@ -29,6 +30,7 @@ export class ApartmentDataService {
     return this.http
                 .post('http://localhost:4567/api/apartments/' + apartment.id + '/activations', {}, this.options)
                 .map(response => response.json()); 
+              
   }
 
   deactivateApartment(apartment: Apartment): Observable<Apartment> {

@@ -8,7 +8,7 @@
   </div>
   <div>
       <app-apartment-detail *ngIf="selectedApartment && selectedApartment.is_active"
-      [apartment]="selectedApartment"></app-apartment-detail>
+      [apartment]="selectedApartment" (apartmentChanged)="updateApartmentList()"></app-apartment-detail>
   </div>
 	
 	<h2>Inactive Listings</h2>
@@ -19,5 +19,5 @@
   </div>
   <div>
       <app-apartment-detail *ngIf="selectedApartment && !selectedApartment.is_active"
-      [apartment]="selectedApartment"></app-apartment-detail>
+      [apartment]="selectedApartment" (apartmentChanged)="updateApartmentList()"></app-apartment-detail>
   </div>

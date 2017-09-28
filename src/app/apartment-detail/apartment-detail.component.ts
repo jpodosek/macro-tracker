@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ApartmentDataService } from '../apartment-data/apartment-data.service';
 import { Apartment } from "../apartment";
 import { SessionDataService } from "../session-data/session-data.service";
@@ -12,6 +12,9 @@ import { Router } from "@angular/router";
 })
 export class ApartmentDetailComponent implements OnInit {
 
+  @Output()
+  apartmentChanged = new EventEmitter();
+
   @Input() //this passes apartment from Apartment-Listing componenet
   apartment: Apartment;
   currentUser: User;
@@ -24,40 +27,32 @@ export class ApartmentDetailComponent implements OnInit {
   ngOnInit() {
        
       this.currentUser = this.data.getCurrentUser();
-
   }
 
-   activateApartment() {
-     console.log("activate Ran");
+   clickActivate() {
+     console.log("activate click Ran");
      this.data2
       .activateApartment(this.apartment)
         .subscribe(
-                  apartment => {
-                    if (apartment) {
-                      this.router.navigate(['/my-listings']);
-                    } else {
-                      e => this.message = 'Oops! We ran into the following error: ' + e
-                    }
-                  }
-
+           apartment => this.setApartmentAndFireEvent(apartment),
+         e => this.message = 'Oops! We ran into the following error: ' + e
                   );
 
   }
 
-  deactivateApartment() {
+  clickDeactivate() {
     console.log("deactivate Ran");
     this.data2
       .deactivateApartment(this.apartment)
         .subscribe(
-                  apartment => {
-                    if (apartment) {
-                      this.router.navigate(['/my-listings']);
-                    } else {
-                      e => this.message = 'Oops! We ran into the following error: ' + e
-                    }
-                  }
-
+          apartment => this.setApartmentAndFireEvent(apartment),
+         e => this.message = 'Oops! We ran into the following error: ' + e
       );
+  }
+
+  private setApartmentAndFireEvent(apartment) {
+    this.apartment = apartment;
+    this.apartmentChanged.emit();
   }
 
 }

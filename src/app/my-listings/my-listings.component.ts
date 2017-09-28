@@ -17,15 +17,17 @@ export class MyListingsComponent implements OnInit {
 
   selectApartment(apartment: Apartment) {
     this.selectedApartment = apartment;
-
   }
 
     hideButton() {
     this.selectedApartment = null;
   };
-  
-  //when you want to do something, put in Init
-  ngOnInit() {
+
+  updateApartmentList() {
+    this.getLatest();
+  }
+
+  getLatest() {
     this.data
       .getMyListings()
       .subscribe(
@@ -33,6 +35,10 @@ export class MyListingsComponent implements OnInit {
         () => this.error = 'Could not load apartment data'
 
       );
+  }
+  
+  ngOnInit() {
+    this.getLatest();
   }
 
   

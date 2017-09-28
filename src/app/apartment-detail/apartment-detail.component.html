@@ -9,8 +9,8 @@
         <li>Number of Bathrooms: {{apartment.number_of_bathrooms}}</li>
         <li>Number of Bedrooms: {{apartment.number_of_bedrooms}}</li>
     </ul>
-<button *ngIf="currentUser && currentUser.id == apartment.user_id && apartment.is_active" (click)="deactivateApartment()" >Deactivate</button>
-<button *ngIf="currentUser && currentUser.id == apartment.user_id && !apartment.is_active" (click)="activateApartment()">Activate</button>
+<button *ngIf="currentUser && currentUser.id == apartment.user_id && apartment.is_active" (click)="clickDeactivate()" >Deactivate</button>
+<button *ngIf="currentUser && currentUser.id == apartment.user_id && !apartment.is_active" (click)="clickActivate()">Activate</button>
 
 
 
