@@ -1,1 +1,67 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+html, body {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+    text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+body, input, textarea, select, button {
+  font-family: 'Roboto', sans-serif;
+}
+
+body, button {
+  font-size: 14px;
+}
+
+input, textarea, select {
+  font-size: 16px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: 1rem;
+   margin: 0;
+  padding: 0;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-bottom-color: #ffc400; 
+}
+
+input::placeholder {
+  font-weight: 300;
+  color: rgba(0, 0, 0, .24);
+}
+
+form {
+  flex: 1 0 0px;
+}
+
+
+button, a.button {
+    color: #ffc400; 
+    background-color: #0000CC;
+  text-decoration: none;
+  text-transform: uppercase;
+  
+  padding: 8px 16px;
+  transition: box-shadow .4s;
+  cursor: pointer;
+}
+
+button:hover, button:focus, a.button:hover, a.button:focus {
+  box-shadow: 0 1px 1px rgba(0, 0, 0, .24);
+}
+
+button[disabled]:hover,
+button[disabled]:focus {
+  box-shadow: none;
+}

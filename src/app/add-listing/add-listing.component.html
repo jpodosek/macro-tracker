@@ -1,0 +1,13 @@
+{{message}}
+<h1>Add an Apartment</h1>
+<form (submit)="addListing()">
+  <input type="number" name="rent"                [(ngModel)]="rent" placeholder="$ Rent"><br>
+  <input type="number" name="number_of_bathrooms" [(ngModel)]="number_of_bathrooms" step="any" placeholder="Number of Bathrooms"><br>
+  <input type="number" name="number_of_bedrooms"  [(ngModel)]="number_of_bedrooms" placeholder="Number of Bedrooms"><br>
+  <input type="number" name="square_footage"      [(ngModel)]="square_footage" placeholder="Square Feet"><br> 
+  <input type="text" name="address"               [(ngModel)]="address" placeholder="Street Address"><br>  
+  <input type="text" name="city"                  [(ngModel)]="city" placeholder="City ">
+  <input type="text" name="state"                 [(ngModel)]="state" placeholder="State">
+  <input type="text" name="zip_code"              [(ngModel)]="zip_code" placeholder="Zipcode"><br>  
+  <button>Add listing</button>
+</form>

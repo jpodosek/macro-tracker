@@ -14,10 +14,14 @@ import { MyListingsComponent } from './my-listings/my-listings.component';
 //Services
 import { ApartmentDataService } from './apartment-data/apartment-data.service';
 import { SessionDataService } from './session-data/session-data.service';
+import { AddListingComponent } from './add-listing/add-listing.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 const routes: Route[] = [
   { path: 'login', component: LoginComponent},
+  { path: 'signup', component: SignUpComponent},
   { path: 'my-listings', component: MyListingsComponent},
+  { path: 'add-listing', component: AddListingComponent}, 
   { path: '',      component: ApartmentListingsComponent } 
 ];
 
@@ -28,7 +32,9 @@ const routes: Route[] = [
     ApartmentListingsComponent,
     ApartmentDetailComponent,
     LoginComponent,
-    MyListingsComponent
+    MyListingsComponent,
+    AddListingComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,

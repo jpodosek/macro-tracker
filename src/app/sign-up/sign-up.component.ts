@@ -3,28 +3,24 @@ import { SessionDataService } from "../session-data/session-data.service";
 import { Router } from "@angular/router";
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-sign-up',
+  templateUrl: './sign-up.component.html',
+  styleUrls: ['./sign-up.component.css']
 })
-export class LoginComponent implements OnInit {
-
-  
+export class SignUpComponent implements OnInit {
   private email: string;
   private password: string;
+  private first_name: string;
+  private last_name: string;
   private message: string;
- // options = { withCredentials: true};
 
   constructor(private data: SessionDataService, private router: Router) { }
 
-  ngOnInit() {}
- 
-
-  submitCredentials() {
-   this.data
-   .login(this.email, this.password)
-     .subscribe(
-               user => {
+  signupFormSubmit() {
+  this.data
+    .createUser(this.email, this.password, this.first_name, this.last_name)
+    .subscribe(
+          user => {
                  if (user) {
                    this.router.navigate(['/my-listings']);
                  } else {
@@ -33,8 +29,11 @@ export class LoginComponent implements OnInit {
                },
                 e => this.message = 'Oops! We ran into the following error: ' + e
              );
+
+
   }
 
-  
+  ngOnInit() {
+  }
 
 }

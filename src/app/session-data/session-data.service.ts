@@ -40,9 +40,21 @@ export class SessionDataService {
       
   }
 
+  createUser(email: string, password: string, first_name: string, last_name: string): Observable<User>{
+    const payload = { email, password, first_name, last_name };
+    return this.http
+      .post('http://localhost:4567/api/users/createUser', payload, this.options)
+      .map(response => response.status === 201 ? response.json(): null) //TODO come back and finish failure
+      .do(user=> this.currentUser = user) //resets current user field
+      .do(user=> this.userChanged.next(user)); //broadcast stuff happened
+      
+  }
+
   getCurrentUser() {
    return this.currentUser;
   }
+
+
 
 
 

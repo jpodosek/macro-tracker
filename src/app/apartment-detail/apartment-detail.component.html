@@ -1,4 +1,4 @@
-
+<div class="detail" >
 {{error}}
 <h3>DETAILS:</h3>
 <b>${{apartment.rent}} per month</b><br>
@@ -11,6 +11,6 @@
     </ul>
 <button *ngIf="currentUser && currentUser.id == apartment.user_id && apartment.is_active" (click)="clickDeactivate()" >Deactivate</button>
 <button *ngIf="currentUser && currentUser.id == apartment.user_id && !apartment.is_active" (click)="clickActivate()">Activate</button>
-
+</div>
 
 

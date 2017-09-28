@@ -38,6 +38,18 @@ export class ApartmentDataService {
                 .post('http://localhost:4567/api/apartments/' + apartment.id + '/deactivations', {}, this.options)
                 .map(response => response.json()); 
   }
+
+
+   createApartment(rent: number,number_of_bedrooms: number, number_of_bathrooms: number, 
+                  square_footage: number, address: string, city: string, 
+                  state: string, zip_code: string): 
+      Observable<Apartment> {
+
+     const payload = { rent, number_of_bedrooms, number_of_bathrooms, square_footage, address, city, state, zip_code }; 
+     return this.http
+                  .post('http://localhost:4567/api/apartments', payload, this.options)
+                  .map(response => response.json()); 
+    }
  
 
   

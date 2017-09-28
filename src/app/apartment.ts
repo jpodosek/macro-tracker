@@ -1,5 +1,12 @@
 export class Apartment {
-    address: string;
-    id: number;
     
+    id: number;
+    rent: number;
+	number_of_bedrooms: number;
+	number_of_bathrooms: number;
+	square_footage: number;
+	address: string;
+	city: string;
+	state: string;
+	zip_code: string;
 }
