@@ -4,6 +4,8 @@
 <div *ngFor="let apartment of apartments">
   <a (click)="selectApartment(apartment)">{{ apartment.address }}</a>
 </div>
-
+<div>
 <app-apartment-detail *ngIf="selectedApartment"
-    [apartment]="selectedApartment"></app-apartment-detail>
+    [apartment]="selectedApartment" (apartmentChanged)="updateApartmentList()">
+</app-apartment-detail>
+  </div>

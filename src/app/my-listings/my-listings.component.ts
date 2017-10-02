@@ -13,7 +13,9 @@ export class MyListingsComponent implements OnInit {
   error: String;
   selectedApartment: Apartment;
 
-  constructor(private data: ApartmentDataService) { }
+  constructor(private data: ApartmentDataService) {
+  
+   }
 
   selectApartment(apartment: Apartment) {
     this.selectedApartment = apartment;

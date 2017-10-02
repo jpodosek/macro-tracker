@@ -9,4 +9,5 @@ export class Apartment {
 	city: string;
 	state: string;
 	zip_code: string;
+	user_id: number;
 }

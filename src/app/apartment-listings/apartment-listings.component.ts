@@ -22,12 +22,22 @@ export class ApartmentListingsComponent implements OnInit {
 
   }
 
+  //when you want to do something, put in Init
+  ngOnInit() {
+    this.getLatest();
+  }
+
   hideButton() {
     this.selectedApartment = null;
   };
 
-  //when you want to do something, put in Init
-  ngOnInit() {
+
+  updateApartmentList() {
+    this.getLatest();
+  }
+
+
+   getLatest() {
     this.data
       .getActiveListings()
       .subscribe(
@@ -36,5 +46,7 @@ export class ApartmentListingsComponent implements OnInit {
 
       );
   }
+
+  
 
 }

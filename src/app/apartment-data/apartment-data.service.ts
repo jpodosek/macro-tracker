@@ -3,6 +3,7 @@ import { Http } from '@angular/http';
 import { Observable } from "rxjs/Observable";
 import { Apartment } from '../apartment';
 import 'rxjs/add/operator/map';
+import { User } from "../user";
 
 @Injectable()
 export class ApartmentDataService {
@@ -50,8 +51,23 @@ export class ApartmentDataService {
                   .post('http://localhost:4567/api/apartments', payload, this.options)
                   .map(response => response.json()); 
     }
- 
 
+    addLike(apartment: Apartment): Observable<Apartment> {
+      console.log('addLike ran');
+       return this.http
+                .post('http://localhost:4567/api/apartments/' + apartment.id + '/like', {}, this.options)
+                .map(response => response.status === 201 ? response.json(): null) //TODO come back and finish failure
+    }
+ 
+    getUsersThatHaveLiked(apartment: Apartment): Observable<User[]> {
+      console.log('getUsersThatHaveLiked ran');
+      //return a list of users
+      //this can be used later for displaying users that have liked
+      return this.http
+                  .get('http://localhost:4567/api/apartments/' + apartment.id + '/like', this.options)
+                  .map(response => response.status === 201 ? response.json(): null) //if User[] is null, stop function; let 0 default stay
+
+    }
   
 
 }
