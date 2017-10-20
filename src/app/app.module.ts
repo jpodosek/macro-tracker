@@ -11,18 +11,22 @@ import { ApartmentListingsComponent } from './apartment-listings/apartment-listi
 import { ApartmentDetailComponent } from './apartment-detail/apartment-detail.component';
 import { LoginComponent } from './login/login.component';
 import { MyListingsComponent } from './my-listings/my-listings.component';
+import { AddListingComponent } from './add-listing/add-listing.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { MacroTableComponent } from './macro-table/macro-table.component';
 //Services
 import { ApartmentDataService } from './apartment-data/apartment-data.service';
 import { SessionDataService } from './session-data/session-data.service';
-import { AddListingComponent } from './add-listing/add-listing.component';
-import { SignUpComponent } from './sign-up/sign-up.component';
+
+
 
 const routes: Route[] = [
+  { path: '', component: MacroTableComponent},
   { path: 'login', component: LoginComponent},
   { path: 'signup', component: SignUpComponent},
   { path: 'my-listings', component: MyListingsComponent},
   { path: 'add-listing', component: AddListingComponent}, 
-  { path: '',      component: ApartmentListingsComponent } 
+  { path: 'apartments-listings',      component: ApartmentListingsComponent } 
 ];
 
 @NgModule({
@@ -34,7 +38,8 @@ const routes: Route[] = [
     LoginComponent,
     MyListingsComponent,
     AddListingComponent,
-    SignUpComponent
+    SignUpComponent,
+    MacroTableComponent
   ],
   imports: [
     BrowserModule,

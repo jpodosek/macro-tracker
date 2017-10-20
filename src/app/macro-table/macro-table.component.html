@@ -1,0 +1,134 @@
+<div class="table">
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th>Monday</th>
+    <th>Tuesday</th>
+    <th>Wednesday</th>
+    <th>Thursday</th>
+    <th>Friday</th>
+    <th>Saturday</th>
+    <th>Sunday</th>
+  </tr>
+  <tr>
+<th>Day</th>
+<th>Current Daily</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+
+  </tr>
+  <tr>
+    <th>Carbs</th>
+    <td>
+      <form>
+  <input type="number" name="dailyCarbMacro" [(ngModel)]="dailyCarbMacro" ng-change="dailyCarbMacro" placeholder="g carbs"><br>
+  </form>
+     </td>
+    <td>{{dailyCarbMacro}}</td>
+    <td>{{dailyCarbMacro}}</td>
+    <td>{{dailyCarbMacro}}</td>
+    <td>{{dailyCarbMacro}}</td>
+    <td>{{dailyCarbMacro}}</td>
+    <td>{{dailyCarbMacro}}</td>
+    <td>{{dailyCarbMacro}}</td>
+  </tr>
+  <tr>
+    <th>Fats</th>
+     <td>
+      <form>
+  <input type="number" name="dailyFatMacro" [(ngModel)]="dailyFatMacro"  ng-change="dailyFatMacro" placeholder="g fat"><br>
+  </form>
+     </td>
+    <td>{{dailyFatMacro}}</td>
+    <td>{{dailyFatMacro}}</td>
+    <td>{{dailyFatMacro}}</td>
+    <td>{{dailyFatMacro}}</td>
+    <td>{{dailyFatMacro}}</td>
+    <td>{{dailyFatMacro}}</td>
+    <td>{{dailyFatMacro}}</td>
+  </tr>
+  <tr>
+    <th>Protein</th>
+     <td>
+      <form>
+  <input type="number" name="dailyProteinMacro" [(ngModel)]="dailyProteinMacro" ng-change="dailyProteinMacro" placeholder="g fat"><br>
+  </form>
+     </td>
+    <td>{{dailyProteinMacro}}</td>
+    <td>{{dailyProteinMacro}}</td>
+    <td>{{dailyProteinMacro}}</td>
+    <td>{{dailyProteinMacro}}</td>
+    <td>{{dailyProteinMacro}}</td>
+    <td>{{dailyProteinMacro}}</td>
+    <td>{{dailyProteinMacro}}</td>
+  </tr>
+  <tr>
+    <td>
+      <div>
+        <form (submit)="calculateDailyCalories()">
+          <button>Calculate</button>
+          </form>
+      </div>
+    </td>
+  </tr>
+  <tr>
+     <div></div>
+    </tr>
+  <tr>
+  <tr>
+    <td>
+     Total Calories
+    </td>
+    <td>
+      <div>
+     {{dailyCalories}} 
+     </div>
+     
+    </td>
+    <td>
+      
+    </td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+   <tr>
+    <td>
+    Carb Variance
+    </td>
+    <td>
+    </td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>
+    Fat Variance
+    </td>
+    <td>
+    </td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+
+</table>
+</div>
