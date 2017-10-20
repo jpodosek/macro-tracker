@@ -3,7 +3,7 @@ import { ApartmentDataService } from '../apartment-data/apartment-data.service';
 import { SessionDataService } from "../session-data/session-data.service";
 import { Apartment } from "../apartment";
 import { User } from "../user";
-import { Router } from "@angular/router";
+import { Router, Route, ActivatedRoute, ParamMap } from "@angular/router";
 
 
 @Component({
@@ -28,16 +28,43 @@ export class ApartmentDetailComponent implements OnInit {
   //hasLiked = false;
   //likeCount = 0;
 
-  constructor(private SDS: SessionDataService, private ADS: ApartmentDataService, private router: Router) {
+  constructor(private SDS: SessionDataService, private ADS: ApartmentDataService, private router: Router, private route: ActivatedRoute) {
     this.usersThatLiked = [];
    }
 
   ngOnInit() {
-    
+
     this.currentUser = this.SDS.getCurrentUser();
-      //if this is not null, use method; otherwise likeCount = 0; 
-     this.setUserLikes();
-     
+    this.setUserLikes();
+    // this.route.paramMap
+    //   .subscribe(
+    //     (params: ParamMap) => this.ADS
+    //       .getApartmentById(Number.parseInt(params.get('id')))
+          
+    //       .subscribe(apartment => {
+    //         this.apartment = apartment;
+    //         this.currentUser = this.SDS.getCurrentUser();
+    //         this.setUserLikes();
+    //         if (this.currentUser === null) {
+    //           window.localStorage.setItem('navPath', `/active/${Number.parseInt(params.get('id'))}`);
+    //         } else {
+    //           window.localStorage.setItem('navPath', '/mine');
+    //         }
+            
+    //       })
+          
+    //   );
+    //   this.baseUrl = window.location.pathname.replace(/\/\d+$/g, '');
+    // if (this.apartment) {
+    //   this.getApartmentLikers();
+    //   this.getApartmentCreator();
+    // }
+
+    
+    
+    //   //if this is not null, use method; otherwise likeCount = 0; 
+    //  this.setUserLikes();
+    //  this.currentUser = this.SDS.getCurrentUser();
      
     
   }
@@ -69,12 +96,6 @@ export class ApartmentDetailComponent implements OnInit {
       this.ADS
             .addLike(this.apartment)
             .subscribe(apartment => this.setApartmentAndFireEvent(apartment))
-          
-         // this.ADS.getMyListings();
-         // this.ADS.getActiveListings();
-    // this.setUserLikes();
-         // this.setUserLikes();
-          //this.determinehasLiked();
           console.log('this ran');
          
   }

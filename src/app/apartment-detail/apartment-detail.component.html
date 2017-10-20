@@ -2,6 +2,12 @@
 {{error}}
 <h3>DETAILS:</h3>
 <div> {{usersThatLiked.length}} likes</div><br>
+ <div *ngIf="currentUser && currentUser.id === apartment.user_id">
+ <h3>Users that Liked this Apartment</h3> 
+    <div *ngFor="let user of usersThatLiked">      
+      {{ user.last_name}}, {{ user.first_name }}  
+    </div>
+ </div>
 <a routerLink="/login" *ngIf="!currentUser">Login to LIKE this apartment</a><br>
 <button *ngIf="currentUser && currentUser.id !== apartment.user_id && !hasLiked()"  (click)="likeClick(apartment)">LIKE</button>
 <br><br>

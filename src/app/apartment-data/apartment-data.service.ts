@@ -68,6 +68,13 @@ export class ApartmentDataService {
                   .map(response => response.status === 201 ? response.json(): null) //if User[] is null, stop function; let 0 default stay
 
     }
+
+    getApartmentById(apartmentId : Number): Observable<Apartment> {
+      console.log('getApartmentById Ran');
+       return this.http
+                .get('http://localhost:4567/api/apartments/' + apartmentId, this.options)
+                .map(response => response.status === 201 ? response.json(): null) //TODO come back and finish failure
   
+    }
 
 }
