@@ -1,0 +1,92 @@
+<h1>Weight Tracker</h1>
+
+<form (submit)="createEntry()">
+<table>
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>BW</th>
+      <th>BW avg</th>
+      <th>BW Change</th>
+      <th>BF</th>
+      <th>BF Change</th>
+      <th>Body Comp Goal</th>
+      <th>Macros</th>
+      <th>Carb Cycling?</th>
+      <th>Training Program</th>
+      <th>Comments</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+
+ <td><input label="date" required type="date" name="date" [(ngModel)]="date" placeholder="mm/dd/yy"></td>
+  <td><input required type="number" name="bodyweight" [(ngModel)]="bodyweight"></td>
+ <td> <input type="number" name="avgBodyweight" [(ngModel)]="avgBodyweight"></td>
+  <td><input type="number" name="changeBodyweight" [(ngModel)]="changeBodyweight"></td>
+  <td><input type="number" name="bodyfat" [(ngModel)]="bodyfat"></td>
+ <td> <input type="number" name="changeBodyfat" [(ngModel)]="changeBodyfat"></td>
+ <td> <select name="bodyCompGoal" [(ngModel)]="bodyCompGoal">
+  <option value="fatLoss">Fat Loss</option>
+  <option value="maintenance">Maintenance</option>
+  <option value="leanBulk">Lean-Bulk</option>
+  <option value="bulk">Bulk</option>
+  <option value="reverseDiet">Reverse Diet</option>
+  </select></td>
+  <td><input type="text" name="macros" [(ngModel)]="macros" placeholder="195P/480C/135F (3915)"required></td>
+  <td>
+  <select name="carbCycling" [(ngModel)]="carbCycling">
+  <option value="yes">Yes</option>
+  <option value="no" selected>No</option>
+  </select></td>
+  <td><input type="text" name="trainingProgram" [(ngModel)]="trainingProgram" placeholder="5 Day Week Summmer Cut" required></td>
+ <td> <input type="text" name="comments" [(ngModel)]="comments"></td>
+    </tr>
+<tr><div><br></div></tr>
+    <!--<p>Use ngFor loop here to list previous weights</p>-->
+    <tr>
+      <td>10/15</td>
+      <td>177.0</td>
+      <td>176.9</td>
+      <td>-0.8</td>
+      <td>15-16%</td>
+      <td></td>
+      <td>Fat Loss</td>
+      <td>185P/205C/50F (2010)</td>
+      <td>No</td>
+      <td>5 Day Week Summer Cut</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>10/16</td>
+      <td>176.5.0</td>
+      <td>176</td>
+      <td>-0.3</td>
+      <td>15%</td>
+      <td></td>
+      <td>Fat Loss</td>
+      <td>185P/205C/50F (2010)</td>
+      <td>No</td>
+      <td>5 Day Week Summer Cut</td>
+      <td>Going harddd</td>
+    </tr>
+    <tr>
+      <td>{{date}}</td>
+      <td>{{bodyweight}}</td>
+      <td>{{avgBodyweight}}</td>
+      <td>{{changeBodyweight}}</td>
+      <td>{{bodyfat}}</td>
+      <td>{{changeBodyfat}}</td>
+      <td>{{bodyCompGoal}}</td>
+      <td>{{macros}}</td>
+      <td>{{carbCycling}}</td>
+      <td>{{trainingProgram}}</td>
+      <td>{{comments}}</td>
+    </tr>
+  </tbody>
+</table>
+
+  
+  <button>Add</button>
+
+</form>

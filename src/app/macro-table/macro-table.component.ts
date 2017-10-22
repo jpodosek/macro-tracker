@@ -1,45 +1,91 @@
-import { Component,Input, OnInit, OnChanges, SimpleChanges, SimpleChange } from '@angular/core';
+import { Component,Input, Output, OnInit, OnChanges, SimpleChanges, SimpleChange } from '@angular/core';
+import { Day } from "../day";
 
 @Component({
   selector: 'app-macro-table',
   templateUrl: './macro-table.component.html',
   styleUrls: ['./macro-table.component.css']
 })
-export class MacroTableComponent implements OnChanges, OnInit {
-  @Input()  dailyCarbMacro: number  
-  @Input()  dailyFatMacro: number
-  @Input()  dailyProteinMacro: number
-   dailyCalories: number;
+export class MacroTableComponent implements OnInit {
+  carbMacroInput: number  
+  fatMacroInput: number
+  proteinMacroInput: number
+  dailyCalories: number
+
+  mondayCarbVariance: number 
+  tuesdayCarbVariance: number
+  wednesdayCarbVariance: number                     
+  thursdayCarbVariance: number  
+  fridayCarbVariance: number  
+  saturdayCarbVariance: number  
+  sundayCarbVariance: number 
+
+  mondayFatVariance: number 
+  tuesdayFatVariance: number
+  wednesdayFatVariance: number                     
+  thursdayFatVariance: number  
+  fridayFatVariance: number  
+  saturdayFatVariance: number  
+  sundayFatVariance: number 
+
+  monday: Day;
+  tuesday: Day;
+  wednesday: Day;
+  thursday: Day;
+  friday: Day;
+  saturday: Day;
+  sunday: Day;
 
   constructor() { 
    
     this.dailyCalories = 0;
+    this.carbMacroInput = 300;
+    this.fatMacroInput = 100;
+    this.proteinMacroInput = 175;
+
+    this.mondayCarbVariance = 1.0;
+    this.mondayFatVariance  = 1.0;
+    this.tuesdayCarbVariance = 1.0;
+    this.tuesdayFatVariance = 1.0;
+    this.wednesdayCarbVariance = 1.0;
+    this.wednesdayFatVariance = 1.0;                  
+    this.thursdayCarbVariance = 1.0; 
+    this.thursdayFatVariance = 1.0;
+    this.fridayCarbVariance = 1.0
+    this.fridayFatVariance = 1.0;
+    this.saturdayCarbVariance = 1.0;
+    this.saturdayFatVariance = 1.0;  
+    this.sundayCarbVariance = 1.0
+    this.sundayFatVariance = 1.0;
+
+    this.submit();
   }
 
-  ngOnInit() {
-    
-  
-  }
+  ngOnInit() {  }
 
- onClick() {
-   this.calculateDailyCalories();
-    console.log("onChange ran");
-
-   console.log(this.dailyCarbMacro);
-   console.log(this.dailyFatMacro);
-   console.log(this.dailyProteinMacro);
+ submit() {
+  this.monday = new Day(this.carbMacroInput, this.fatMacroInput, this.proteinMacroInput, this.mondayCarbVariance, this.mondayFatVariance);
+  this.tuesday = new Day(this.carbMacroInput, this.fatMacroInput, this.proteinMacroInput, this.tuesdayCarbVariance, this.tuesdayFatVariance);
+  this.wednesday = new Day(this.carbMacroInput, this.fatMacroInput, this.proteinMacroInput, this.wednesdayCarbVariance, this.wednesdayFatVariance);
+  this.thursday = new Day(this.carbMacroInput, this.fatMacroInput, this.proteinMacroInput, this.thursdayCarbVariance, this.thursdayFatVariance);
+  this.friday = new Day(this.carbMacroInput, this.fatMacroInput, this.proteinMacroInput, this.fridayCarbVariance, this.fridayFatVariance);
+  this.saturday = new Day(this.carbMacroInput, this.fatMacroInput, this.proteinMacroInput, this.saturdayCarbVariance, this.saturdayFatVariance);
+  this.sunday = new Day(this.carbMacroInput, this.fatMacroInput, this.proteinMacroInput, this.sundayCarbVariance, this.sundayFatVariance);
+   
+  this.calculateDailyCalories();
+  console.log(this.monday.carbQty);
+  console.log(this.monday.dailyCalorieTotal);
  }
 
- ngOnChanges() {
-   this.calculateDailyCalories();
-  
-  }
 
  calculateDailyCalories(){
    
-   this.dailyCalories = (+this.dailyCarbMacro * 4) 
-                      + (+this.dailyFatMacro * 9) 
-                      + (+this.dailyProteinMacro  *4);
+   this.dailyCalories = (+this.carbMacroInput * 4) 
+                      + (+this.fatMacroInput * 9) 
+                      + (+this.proteinMacroInput  *4);
  }
+
+ 
+
 
 }

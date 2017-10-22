@@ -17,16 +17,19 @@ import { MacroTableComponent } from './macro-table/macro-table.component';
 //Services
 import { ApartmentDataService } from './apartment-data/apartment-data.service';
 import { SessionDataService } from './session-data/session-data.service';
+import { WeightTrackerComponent } from './weight-tracker/weight-tracker.component';
+import { WeightTrackerDataServiceComponent } from './weight-tracker-data-service/weight-tracker-data-service.component';
 
 
 
 const routes: Route[] = [
-  { path: '', component: MacroTableComponent},
+  { path: 'macros', component: MacroTableComponent},
   { path: 'login', component: LoginComponent},
   { path: 'signup', component: SignUpComponent},
   { path: 'my-listings', component: MyListingsComponent},
   { path: 'add-listing', component: AddListingComponent}, 
-  { path: 'apartments-listings',      component: ApartmentListingsComponent } 
+  { path: 'apartments-listings',      component: ApartmentListingsComponent },
+  { path: '',      component: WeightTrackerComponent }  
 ];
 
 @NgModule({
@@ -39,7 +42,9 @@ const routes: Route[] = [
     MyListingsComponent,
     AddListingComponent,
     SignUpComponent,
-    MacroTableComponent
+    MacroTableComponent,
+    WeightTrackerComponent,
+    WeightTrackerDataServiceComponent
   ],
   imports: [
     BrowserModule,

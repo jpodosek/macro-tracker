@@ -1,8 +1,7 @@
 <p>
  <a routerLink="/">Home</a>
- <a routerLink="/my-listings" *ngIf="currentUser">My History</a>
- <a routerLink="/login" *ngIf="!currentUser">Login</a>
- <a routerLink="/signup" *ngIf="!currentUser">Sign Up!</a>
- <button (click)="logout()" *ngIf="currentUser">Logout</button>
+ <a routerLink="/my-listings">My History</a>
+ <a routerLink="/macros">Macros</a>
+ <a routerLink="/">Weight Tracker</a>
 </p>
 
