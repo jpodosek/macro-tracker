@@ -18,7 +18,7 @@ import { MacroTableComponent } from './macro-table/macro-table.component';
 import { ApartmentDataService } from './apartment-data/apartment-data.service';
 import { SessionDataService } from './session-data/session-data.service';
 import { WeightTrackerComponent } from './weight-tracker/weight-tracker.component';
-import { WeightTrackerDataServiceComponent } from './weight-tracker-data-service/weight-tracker-data-service.component';
+import { WeightTrackerService } from './weight-tracker-data/weight-tracker.service';
 
 
 
@@ -43,8 +43,7 @@ const routes: Route[] = [
     AddListingComponent,
     SignUpComponent,
     MacroTableComponent,
-    WeightTrackerComponent,
-    WeightTrackerDataServiceComponent
+    WeightTrackerComponent
   ],
   imports: [
     BrowserModule,
@@ -53,6 +52,7 @@ const routes: Route[] = [
     FormsModule
   ],
   providers:[ApartmentDataService, //singleton, bc at module level
+    WeightTrackerService,
   SessionDataService],
   bootstrap: [AppComponent]
 })

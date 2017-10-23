@@ -1,5 +1,6 @@
 export class Weight {
-    private date: Date;
+    
+private date: Date;
   private bodyweight: number;
   private avgBodyweight: number;
   private changeBodyweight: number;
@@ -10,7 +11,6 @@ export class Weight {
   private carbCycling: string;
   private trainingProgram: string;
   private comments: string;
-
     
   
 }
