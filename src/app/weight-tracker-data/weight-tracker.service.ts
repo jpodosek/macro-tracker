@@ -9,7 +9,7 @@ export class WeightTrackerService {
 
   constructor(private http: Http) { }
 
-      baseUrl = 'http://localhost:4567/api/weight-tracker';
+      baseUrl = 'http://localhost:4567/api/weight';
  
   options = { withCredentials: true };
 
@@ -17,8 +17,8 @@ export class WeightTrackerService {
 createWeightEntry(date: Date, bodyweight: number, avgBodyweight: number, changeBodyweight: number, bodyfat: number, changeBodyfat: number,
                   bodyCompGoal: string, macros: string, carbCycling: string, trainingProgram: string, comments: string): 
        Observable<Weight> {
-
-     const payload = { bodyweight, avgBodyweight, changeBodyweight, bodyfat, changeBodyfat, bodyCompGoal, macros, carbCycling, trainingProgram, comments }; 
+        console.log('createWeightEntry ran');
+     const payload = { date, bodyweight, avgBodyweight, changeBodyweight, bodyfat, changeBodyfat, bodyCompGoal, macros, carbCycling, trainingProgram, comments }; 
      return this.http
                   .post(this.baseUrl, payload, this.options)
                   .map(response => response.json()); 
@@ -27,7 +27,7 @@ createWeightEntry(date: Date, bodyweight: number, avgBodyweight: number, changeB
 
     getMyWeightHistory(): Observable<Weight[]> {
     return this.http
-                .get(this.baseUrl + '/all',  this.options)
+                .get(this.baseUrl,  this.options)
                 .map(response => response.json()); 
   }
 

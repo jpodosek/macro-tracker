@@ -32,13 +32,14 @@ export class WeightTrackerComponent implements OnInit {
   ngOnInit() {
   }
 
-  addEntry() {
+  createEntry() {
+    console.log("add entry ran");
      this.data
           .createWeightEntry(this.date, this.bodyweight,this.avgBodyweight,this.changeBodyweight, this.bodyfat, this.changeBodyfat, this.bodyCompGoal, this.macros, this.carbCycling, this.trainingProgram, this.comments)
             .subscribe(
                 weight => {
                  if (weight) {
-
+                    this.getHistory()
                    //we'll want to show this newly added row. probably need to create List of Weight Entries
                    console.log("weight returned on subscribe");
                   } else {
@@ -51,8 +52,10 @@ export class WeightTrackerComponent implements OnInit {
   }
 
    getHistory() {
+      console.log("getHistory");
     this.data
       .getMyWeightHistory()
+      
       .subscribe(
         weightHistory => this.weightHistory = weightHistory,
         () => this.error = 'Could not load apartment data'
