@@ -1,172 +1,199 @@
 <div class="table">
-<table>
-  <tr>
-    <th></th>
-    <th></th>
-    <th>Monday</th>
-    <th>Tuesday</th>
-    <th>Wednesday</th>
-    <th>Thursday</th>
-    <th>Friday</th>
-    <th>Saturday</th>
-    <th>Sunday</th>
-  </tr>
-  <tr>
-<th>Day</th>
-<th>Current Daily</th>
-<th>1</th>
-<th>2</th>
-<th>3</th>
-<th>4</th>
-<th>5</th>
-<th>6</th>
-<th>7</th>
-
-  </tr>
-  <tr>
-    <th>Carbs</th>
-    <td>
-      <form>
-  <input type="number" name="carbMacroInput" [(ngModel)]="carbMacroInput" (change)="submit()" placeholder="g carbs"  min="0" max="1000" step="5" required><br>
-  </form>
-     </td>
-    <td>{{monday.carbQty}}</td>
-    <td>{{tuesday.carbQty}}</td>
-    <td>{{wednesday.carbQty}}</td>
-    <td>{{thursday.carbQty}}</td>
-    <td>{{friday.carbQty}}</td>
-    <td>{{saturday.carbQty}}</td>
-    <td>{{sunday.carbQty}}</td>
-  </tr>
-  <tr>
-    <th>Fats</th>
-     <td>
-      <form>
-  <input type="number" name="fatMacroInput" [(ngModel)]="fatMacroInput" (change)="submit()"placeholder="g fat"><br>
-  </form>
-     </td>
-    <td>{{monday.fatQty}}</td>
-    <td>{{tuesday.fatQty}}</td>
-    <td>{{wednesday.fatQty}}</td>
-    <td>{{thursday.fatQty}}</td>
-    <td>{{friday.fatQty}}</td>
-    <td>{{saturday.fatQty}}</td>
-    <td>{{sunday.fatQty}}</td>
-  </tr>
-  <tr>
-    <th>Protein</th>
-     <td>
-      <form>
-  <input type="number" name="proteinMacroInput" [(ngModel)]="proteinMacroInput" (change)="submit()" placeholder="g fat"><br>
-  </form>
-     </td>
-    <td>{{monday.proteinQty}}</td>
-    <td>{{tuesday.proteinQty}}</td>
-    <td>{{wednesday.proteinQty}}</td>
-    <td>{{thursday.proteinQty}}</td>
-    <td>{{friday.proteinQty}}</td>
-    <td>{{saturday.proteinQty}}</td>
-    <td>{{sunday.proteinQty}}</td>
-  </tr>
-  <tr>
-    <td>
-    </td>
-  </tr>
-  <tr>
-     <div></div>
+  <table>
+    <tr>
+      <th></th>
+      <th></th>
+      <th>Monday</th>
+      <th>Tuesday</th>
+      <th>Wednesday</th>
+      <th>Thursday</th>
+      <th>Friday</th>
+      <th>Saturday</th>
+      <th>Sunday</th>
     </tr>
-  <tr>
-  <tr>
-    <td>
-     Total Calories
-    </td>
-    <td>
-        <div [(ngModel)]="dailyCalories" >
-      {{dailyCalories}}
-     </div>
-     
-    </td>
-    <td>{{monday.dailyCalorieTotal}}</td>
-    <td>{{tuesday.dailyCalorieTotal}}</td>
-    <td>{{wednesday.dailyCalorieTotal}}</td>
-    <td>{{thursday.dailyCalorieTotal}}</td>
-    <td>{{friday.dailyCalorieTotal}}</td>
-    <td>{{saturday.dailyCalorieTotal}}</td>
-    <td>{{sunday.dailyCalorieTotal}}</td>
-  </tr>
-   <tr>
-    <td>
-    Carb Variance
-    </td>
-    <td></td>
-    
-    <td>
-      <form>
-     <input type="number" name="mondayCarbVariance" [(ngModel)]="mondayCarbVariance" (change)="submit()" placeholder="1.0" min="0" max="2" step="0.1" required>
-     </form>
+    <tr>
+      <th>Day</th>
+      <th>Current Daily</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+
+    </tr>
+    <tr>
+      <th>Carbs</th>
+      <td>
+        <form>
+          <input type="number" name="carbMacroInput" [(ngModel)]="carbMacroInput" (change)="calculate()" placeholder="g carbs" min="0"
+            max="1000" step="5" required><br>
+        </form>
       </td>
-    <td><form>
-     <input type="number" name="tuesdayCarbVariance" [(ngModel)]="tuesdayCarbVariance" (change)="submit()" placeholder="1.0" min="0" max="2" step="0.1" required>
-     </form></td>
-    <td><form>
-    <input type="number" name="wednesdayCarbVariance" [(ngModel)]="wednesdayCarbVariance" (change)="submit()" placeholder="1.0" min="0" max="2" step="0.1" required>
-     </form></td>
-    <td><form>
-     <input type="number" name="thursdayCarbVariance" [(ngModel)]="thursdayCarbVariance" (change)="submit()" placeholder="1.0" min="0" max="2" step="0.1" required>
-     </form></td>
-    <td><form>
-     <input type="number" name="fridayCarbVariance" [(ngModel)]="fridayCarbVariance" (change)="submit()" placeholder="1.0" min="0" max="2" step="0.1" required>
-     </form></td>
-    <td><form>
-    <input type="number" name="saturdayCarbVariance" [(ngModel)]="saturdayCarbVariance" (change)="submit()" placeholder="1.0" min="0" max="2" step="0.1" required>
-     </form>
-    </td>
-     <td> <form>
-    <input type="number" name="sundayCarbVariance" [(ngModel)]="sundayCarbVariance" (change)="submit()" placeholder="1.0" min="0" max="2" step="0.1" required>
-     </form>
-
-     </td>
-  </tr>
-  <tr>
-    <td>
-    Fat Variance
-    </td>
-    <td></td>
-    
-    <td>
-      <form>
-     <input type="number" name="mondayFatVariance" [(ngModel)]="mondayFatVariance" (change)="submit()" placeholder="1.0">
-     </form>
+      <td>{{monday.carbQty}}</td>
+      <td>{{tuesday.carbQty}}</td>
+      <td>{{wednesday.carbQty}}</td>
+      <td>{{thursday.carbQty}}</td>
+      <td>{{friday.carbQty}}</td>
+      <td>{{saturday.carbQty}}</td>
+      <td>{{sunday.carbQty}}</td>
+    </tr>
+    <tr>
+      <th>Fats</th>
+      <td>
+        <form>
+          <input type="number" name="fatMacroInput" [(ngModel)]="fatMacroInput" (change)="calculate()" placeholder="g fat"><br>
+        </form>
       </td>
-    <td><form>
-     <input type="number" name="tuesdayFatVariance" [(ngModel)]="tuesdayFatVariance" (change)="submit()" placeholder="1.0">
-     </form></td>
-    <td><form>
-    <input type="number" name="wednesdayFatVariance" [(ngModel)]="wednesdayFatVariance" (change)="submit()" placeholder="1.0">
-     </form></td>
-    <td><form>
-     <input type="number" name="thursdayFatVariance" [(ngModel)]="thursdayFatVariance" (change)="submit()" placeholder="1.0">
-     </form></td>
-    <td><form>
-     <input type="number" name="fridayFatVariance" [(ngModel)]="fridayFatariance" (change)="submit()" placeholder="1.0">
-     </form></td>
-    <td><form>
-    <input type="number" name="saturdayFatVariance" [(ngModel)]="saturdayFatVariance" (change)="submit()" placeholder="1.0">
-     </form>
-    </td>
-     <td>
-    <form>
-    <input type="number" name="sundayFatVariance" [(ngModel)]="sundayFatVariance" (change)="submit()" placeholder="1.0">
-     </form>
+      <td>{{monday.fatQty}}</td>
+      <td>{{tuesday.fatQty}}</td>
+      <td>{{wednesday.fatQty}}</td>
+      <td>{{thursday.fatQty}}</td>
+      <td>{{friday.fatQty}}</td>
+      <td>{{saturday.fatQty}}</td>
+      <td>{{sunday.fatQty}}</td>
+    </tr>
+    <tr>
+      <th>Protein</th>
+      <td>
+        <form>
+          <input type="number" name="proteinMacroInput" [(ngModel)]="proteinMacroInput" (change)="calculate()" placeholder="g fat"><br>
+        </form>
+      </td>
+      <td>{{monday.proteinQty}}</td>
+      <td>{{tuesday.proteinQty}}</td>
+      <td>{{wednesday.proteinQty}}</td>
+      <td>{{thursday.proteinQty}}</td>
+      <td>{{friday.proteinQty}}</td>
+      <td>{{saturday.proteinQty}}</td>
+      <td>{{sunday.proteinQty}}</td>
+    </tr>
+    <tr>
+      <td>
+      </td>
+    </tr>
+    <tr>
+      <div></div>
+    </tr>
+    <tr>
+      <tr>
+        <td>
+          Total Calories
+        </td>
+        <td>
+          <div [(ngModel)]="dailyCalories">
+            {{dailyCalories}}
+          </div>
 
-     </td>
-  </tr>
+        </td>
+        <td>{{monday.dailyCalorieTotal}}</td>
+        <td>{{tuesday.dailyCalorieTotal}}</td>
+        <td>{{wednesday.dailyCalorieTotal}}</td>
+        <td>{{thursday.dailyCalorieTotal}}</td>
+        <td>{{friday.dailyCalorieTotal}}</td>
+        <td>{{saturday.dailyCalorieTotal}}</td>
+        <td>{{sunday.dailyCalorieTotal}}</td>
+      </tr>
+      <tr>
+        <td>
+          Carb Variance
+        </td>
+        <td></td>
 
-</table>
+        <td>
+          <form>
+            <input type="number" name="mondayCarbVariance" [(ngModel)]="mondayCarbVariance" (change)="calculate()" placeholder="1.0"
+              min="0" max="2" step="0.1" required>
+          </form>
+        </td>
+        <td>
+          <form>
+            <input type="number" name="tuesdayCarbVariance" [(ngModel)]="tuesdayCarbVariance" (change)="calculate()" placeholder="1.0"
+              min="0" max="2" step="0.1" required>
+          </form>
+        </td>
+        <td>
+          <form>
+            <input type="number" name="wednesdayCarbVariance" [(ngModel)]="wednesdayCarbVariance" (change)="calculate()" placeholder="1.0"
+              min="0" max="2" step="0.1" required>
+          </form>
+        </td>
+        <td>
+          <form>
+            <input type="number" name="thursdayCarbVariance" [(ngModel)]="thursdayCarbVariance" (change)="calculate()" placeholder="1.0"
+              min="0" max="2" step="0.1" required>
+          </form>
+        </td>
+        <td>
+          <form>
+            <input type="number" name="fridayCarbVariance" [(ngModel)]="fridayCarbVariance" (change)="calculate()" placeholder="1.0"
+              min="0" max="2" step="0.1" required>
+          </form>
+        </td>
+        <td>
+          <form>
+            <input type="number" name="saturdayCarbVariance" [(ngModel)]="saturdayCarbVariance" (change)="calculate()" placeholder="1.0"
+              min="0" max="2" step="0.1" required>
+          </form>
+        </td>
+        <td>
+          <form>
+            <input type="number" name="sundayCarbVariance" [(ngModel)]="sundayCarbVariance" (change)="calculate()" placeholder="1.0"
+              min="0" max="2" step="0.1" required>
+          </form>
+
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Fat Variance
+        </td>
+        <td></td>
+
+        <td>
+          <form>
+            <input type="number" name="mondayFatVariance" [(ngModel)]="mondayFatVariance" (change)="calculate()" placeholder="1.0">
+          </form>
+        </td>
+        <td>
+          <form>
+            <input type="number" name="tuesdayFatVariance" [(ngModel)]="tuesdayFatVariance" (change)="calculate()" placeholder="1.0">
+          </form>
+        </td>
+        <td>
+          <form>
+            <input type="number" name="wednesdayFatVariance" [(ngModel)]="wednesdayFatVariance" (change)="calculate()" placeholder="1.0">
+          </form>
+        </td>
+        <td>
+          <form>
+            <input type="number" name="thursdayFatVariance" [(ngModel)]="thursdayFatVariance" (change)="calculate()" placeholder="1.0">
+          </form>
+        </td>
+        <td>
+          <form>
+            <input type="number" name="fridayFatVariance" [(ngModel)]="fridayFatariance" (change)="calculate()" placeholder="1.0">
+          </form>
+        </td>
+        <td>
+          <form>
+            <input type="number" name="saturdayFatVariance" [(ngModel)]="saturdayFatVariance" (change)="calculate()" placeholder="1.0">
+          </form>
+        </td>
+        <td>
+          <form>
+            <input type="number" name="sundayFatVariance" [(ngModel)]="sundayFatVariance" (change)="calculate()" placeholder="1.0">
+          </form>
+
+        </td>
+      </tr>
+
+  </table>
 </div>
 <div>
-        <form (submit)="submit()">
-          <button>Calculate</button>
-        </form>
-    
+  <form (submit)="save()">
+    <button>Save</button>
+  </form>
+
 </div>
