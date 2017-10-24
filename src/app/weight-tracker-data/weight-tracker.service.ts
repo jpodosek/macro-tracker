@@ -9,7 +9,7 @@ export class WeightTrackerService {
 
   constructor(private http: Http) { }
 
-      baseUrl = 'http://localhost:4567/api/weight';
+      baseUrl = 'http://localhost:8080/api/weight';
  
   options = { withCredentials: true };
 

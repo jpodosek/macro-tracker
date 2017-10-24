@@ -30,6 +30,7 @@ export class WeightTrackerComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getHistory();
   }
 
   createEntry() {
@@ -52,12 +53,13 @@ export class WeightTrackerComponent implements OnInit {
   }
 
    getHistory() {
+    
       console.log("getHistory");
     this.data
-      .getMyWeightHistory()
-      
+      .getMyWeightHistory()  
       .subscribe(
-        weightHistory => this.weightHistory = weightHistory,
+        weightHistory => this.weightHistory = weightHistory.sort(),
+        //weightHistory => this.weightHistory = weightHistory, //take Weight[] returned and set it equal to instance variable
         () => this.error = 'Could not load apartment data'
 
       );
