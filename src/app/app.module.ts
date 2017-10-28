@@ -19,6 +19,7 @@ import { ApartmentDataService } from './apartment-data/apartment-data.service';
 import { SessionDataService } from './session-data/session-data.service';
 import { WeightTrackerComponent } from './weight-tracker/weight-tracker.component';
 import { WeightTrackerService } from './weight-tracker-data/weight-tracker.service';
+import { MacroDataService } from './macro-data/macro-data.service';
 
 
 
@@ -53,6 +54,7 @@ const routes: Route[] = [
   ],
   providers:[ApartmentDataService, //singleton, bc at module level
     WeightTrackerService,
+    MacroDataService,
   SessionDataService],
   bootstrap: [AppComponent]
 })

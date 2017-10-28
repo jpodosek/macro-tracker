@@ -1,5 +1,6 @@
 import { Component, Input, Output, OnInit, OnChanges, SimpleChanges, SimpleChange } from '@angular/core';
 import { Day } from "../day";
+import { MacroDataService } from "../macro-data/macro-data.service";
 
 @Component({
   selector: 'app-macro-table',
@@ -7,11 +8,12 @@ import { Day } from "../day";
   styleUrls: ['./macro-table.component.css']
 })
 export class MacroTableComponent implements OnInit {
-  week: Day[];
+  weekMacros: Day[]
   carbMacroInput: number
   fatMacroInput: number
   proteinMacroInput: number
   dailyCalories: number
+  error: String
 
   mondayCarbVariance: number
   tuesdayCarbVariance: number
@@ -36,8 +38,10 @@ export class MacroTableComponent implements OnInit {
   friday: Day;
   saturday: Day;
   sunday: Day;
+  
+  
 
-  constructor() {
+  constructor(private data: MacroDataService ) {
 
     this.dailyCalories = 0;
     this.carbMacroInput = 300;
@@ -59,23 +63,24 @@ export class MacroTableComponent implements OnInit {
     this.sundayCarbVariance = 1.0
     this.sundayFatVariance = 1.0;
 
-    this.calculate();
+   
   }
 
-  ngOnInit() { }
+  ngOnInit() { 
+    this.getHistory();
+    this.calculate(); 
+  }
 
   calculate() {
-    this.monday = new Day(this.carbMacroInput, this.fatMacroInput, this.proteinMacroInput, this.mondayCarbVariance, this.mondayFatVariance);
-    this.tuesday = new Day(this.carbMacroInput, this.fatMacroInput, this.proteinMacroInput, this.tuesdayCarbVariance, this.tuesdayFatVariance);
-    this.wednesday = new Day(this.carbMacroInput, this.fatMacroInput, this.proteinMacroInput, this.wednesdayCarbVariance, this.wednesdayFatVariance);
-    this.thursday = new Day(this.carbMacroInput, this.fatMacroInput, this.proteinMacroInput, this.thursdayCarbVariance, this.thursdayFatVariance);
-    this.friday = new Day(this.carbMacroInput, this.fatMacroInput, this.proteinMacroInput, this.fridayCarbVariance, this.fridayFatVariance);
-    this.saturday = new Day(this.carbMacroInput, this.fatMacroInput, this.proteinMacroInput, this.saturdayCarbVariance, this.saturdayFatVariance);
-    this.sunday = new Day(this.carbMacroInput, this.fatMacroInput, this.proteinMacroInput, this.sundayCarbVariance, this.sundayFatVariance);
+    this.monday = new Day("Monday", this.carbMacroInput, this.fatMacroInput, this.proteinMacroInput, this.mondayCarbVariance, this.mondayFatVariance);
+    this.tuesday = new Day("Tuesday", this.carbMacroInput, this.fatMacroInput, this.proteinMacroInput, this.tuesdayCarbVariance, this.tuesdayFatVariance);
+    this.wednesday = new Day("Wednesday", this.carbMacroInput, this.fatMacroInput, this.proteinMacroInput, this.wednesdayCarbVariance, this.wednesdayFatVariance);
+    this.thursday = new Day("Thursday", this.carbMacroInput, this.fatMacroInput, this.proteinMacroInput, this.thursdayCarbVariance, this.thursdayFatVariance);
+    this.friday = new Day("Friday", this.carbMacroInput, this.fatMacroInput, this.proteinMacroInput, this.fridayCarbVariance, this.fridayFatVariance);
+    this.saturday = new Day("Saturday", this.carbMacroInput, this.fatMacroInput, this.proteinMacroInput, this.saturdayCarbVariance, this.saturdayFatVariance);
+    this.sunday = new Day("Sunday", this.carbMacroInput, this.fatMacroInput, this.proteinMacroInput, this.sundayCarbVariance, this.sundayFatVariance);
 
     this.calculateDailyCalories();
-    console.log(this.monday.carbQty);
-    console.log(this.monday.dailyCalorieTotal);
   }
 
 
@@ -86,15 +91,44 @@ export class MacroTableComponent implements OnInit {
       + (+this.proteinMacroInput * 4);
   }
 
-  save() {
-    this.week = [this.monday, this.tuesday, this.wednesday, this.thursday, this.friday, this.saturday, this.sunday];
+  getHistory() {
+    console.log("getHistory ran");
+    this.data
+      .getCurrentWeekMacros()  
+      .subscribe(
+        weekMacros => this.weekMacros = weekMacros,
+        () => this.error = 'Error retrieving current macro data.'
 
-    //stick all the daily objects into a weekly array object od type day
-    //dataa service can subscribe to this and respond
-    for (var i = 0; i < this.week.length; i++) {
-      console.log(this.week[i])
-    }
+      );
   }
+
+  save() {
+    this.weekMacros = [this.monday, this.tuesday, this.wednesday, this.thursday, this.friday, this.saturday, this.sunday];
+    console.log("save ran")
+    this.data
+      .saveMacroEntry(this.weekMacros)
+        .subscribe(           
+            weekMacros => {
+              if (weekMacros) {
+                weekMacros => this.weekMacros = weekMacros;
+               // this.getHistory()
+                console.log("weekMacros returned on subscribe");
+                console.log("weekmacros object:" + this.weekMacros);
+              }
+               else {
+                   e => this.error = 'Oops! We ran into the following error: ' + e
+                 }
+            }
+        );
+   // this.weekMacros = [this.monday, this.tuesday, this.wednesday, this.thursday, this.friday, this.saturday, this.sunday];
+
+
+    //stick all the daily objects into a weekMacrosly array object od type day
+    //dataa service can subscribe to this and respond
+
+  }
+
+  
 
 
 

@@ -20,21 +20,21 @@
       <tbody>
         <tr>
           <td><input label="date" required type="date" name="date" [(ngModel)]="date" placeholder="mm/dd/yy"></td>
-          <td><input required type="number" name="bodyweight" [(ngModel)]="bodyweight"></td>
+          <td><input  type="number" name="bodyweight" [(ngModel)]="bodyweight"required></td>
           <td> <input type="number" name="avgBodyweight" [(ngModel)]="avgBodyweight"></td>
           <td><input type="number" name="changeBodyweight" [(ngModel)]="changeBodyweight"></td>
           <td><input type="number" name="bodyfat" [(ngModel)]="bodyfat"></td>
           <td> <input type="number" name="changeBodyfat" [(ngModel)]="changeBodyfat"></td>
-          <td> <select name="bodyCompGoal" [(ngModel)]="bodyCompGoal">
+          <td> <select  name="bodyCompGoal" [(ngModel)]="bodyCompGoal" required>
                 <option value="fatLoss">Fat Loss</option>
                 <option value="maintenance">Maintenance</option>
                 <option value="leanBulk">Lean-Bulk</option>
                 <option value="bulk">Bulk</option>
                 <option value="reverseDiet">Reverse Diet</option>
                 </select></td>
-          <td><input type="text" name="macros" [(ngModel)]="macros" placeholder="195P/480C/135F (3915)" required></td>
+          <td><input  type="text" name="macros" [(ngModel)]="macros" placeholder="195P/480C/135F (3915)" required></td>
           <td>
-            <select name="carbCycling" [(ngModel)]="carbCycling">
+            <select name="carbCycling" [(ngModel)]="carbCycling" required>
               <option value="yes">Yes</option>
               <option value="no" selected>No</option>
             </select></td>
