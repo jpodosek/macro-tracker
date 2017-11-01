@@ -24,13 +24,13 @@ import { MacroDataService } from './macro-data/macro-data.service';
 
 
 const routes: Route[] = [
-  { path: 'macros', component: MacroTableComponent},
+  { path: '', component: MacroTableComponent},
   { path: 'login', component: LoginComponent},
   { path: 'signup', component: SignUpComponent},
   { path: 'my-listings', component: MyListingsComponent},
   { path: 'add-listing', component: AddListingComponent}, 
   { path: 'apartments-listings',      component: ApartmentListingsComponent },
-  { path: '',      component: WeightTrackerComponent }  
+  { path: 'weight',      component: WeightTrackerComponent }  
 ];
 
 @NgModule({

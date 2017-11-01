@@ -10,7 +10,7 @@ export class Day {
     fatVariance: number;
     dayName: String;
    
-   public constructor(dayName,
+   public constructor(
         private carbMacroInput, private fatMacroInput, private proteinMacroInput, carbVariance,  fatVariance) {
             this.carbVariance = carbVariance;
             this.fatVariance = fatVariance;

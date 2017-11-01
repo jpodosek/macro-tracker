@@ -44,7 +44,8 @@
       <th>Fats</th>
       <td>
         <form>
-          <input type="number" name="fatMacroInput" [(ngModel)]="fatMacroInput" (change)="calculate()" placeholder="g fat"><br>
+          <input type="number" name="fatMacroInput" [(ngModel)]="fatMacroInput" (change)="calculate()" placeholder="g fat" min="0"
+            max="1000" step="5" required><br>
         </form>
       </td>
       <td>{{monday.fatQty}}</td>
@@ -59,7 +60,8 @@
       <th>Protein</th>
       <td>
         <form>
-          <input type="number" name="proteinMacroInput" [(ngModel)]="proteinMacroInput" (change)="calculate()" placeholder="g fat"><br>
+          <input type="number" name="proteinMacroInput" [(ngModel)]="proteinMacroInput" (change)="calculate()" placeholder="g protein" min="0"
+            max="1000" step="5" required><br>
         </form>
       </td>
       <td>{{monday.proteinQty}}</td>
@@ -174,7 +176,7 @@
         </td>
         <td>
           <form>
-            <input type="number" name="fridayFatVariance" [(ngModel)]="fridayFatariance" (change)="calculate()" placeholder="1.0">
+            <input type="number" name="fridayFatVariance" [(ngModel)]="fridayFatVariance" (change)="calculate()" placeholder="1.0">
           </form>
         </td>
         <td>
